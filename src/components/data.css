@@ -1,0 +1,26 @@
+#details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    gap: 4px;
+    padding: 8px;
+    background-color:#78787822;
+    border-radius: 10px;
+    backdrop-filter: blur(10px)
+}
+
+
+#details p{
+    font-size: 14px;
+    font-weight: 500;
+    text-transform:uppercase;
+}
+
+#details h1{
+    font-weight:500;
+}
+
+#bottom::-webkit-scrollbar{
+    display: none;
+}
