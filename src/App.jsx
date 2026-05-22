@@ -26,9 +26,24 @@ const App = () => {
             return
         }
         const data = await response.json()
+        
+        try{
+          const repository = await fetch(`https://api.github.com/users/${trimmedName}/repos`)
+          if(repository.status !== 200){
+            setError(trimmedName)
+            setUser(null)
+            return
+          }
+          const repo_data = await repository.json()
+          setRepos(repo_data)
+          console.log(repo_data);
+          
+          
+        }catch(err){
+          setError("Repos could not be fetched")
+        }
         setUser(data)
         setError("")
-        console.log("HERE!!!")
     }
 
     catch(err){
@@ -45,7 +60,7 @@ const App = () => {
     >
       <Content username={username}  setUsername={setUsername} fetchUser={fetchUser}/>
       {error && <ErrorPage name={error}/>}      
-      {user && <User user={user} />}
+      {user && <User user={user} repos={repos}/>}
       
     </div>
   )

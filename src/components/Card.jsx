@@ -1,17 +1,19 @@
 import React from 'react'
 import { SquareArrowOutUpRight } from 'lucide-react';
-const Card = () => {
+const Card = ({id, repos}) => {
+  const date = new Date(repos.updated_at)
+  const formatted = date.toLocaleString()
   return (
-    // 
     <div className=' bg-[#78787822] backdrop-blur-xl h-[70%] shrink-0 px-3 rounded-xl flex flex-col justify-evenly font-semibold'>
       <div className='flex justify-between'>
-        <p className='font-medium text-lg'>Repo Name</p>
-        <a href="{link}"><SquareArrowOutUpRight className='' /></a>
+        
+        <p className='font-medium text-lg'>{repos.name}</p>
+        <a href={repos.clone_url} target='_blank'><SquareArrowOutUpRight className='' /></a>
       </div>            
-      <p className='leading-tight text-sm line-clamp-4 text-gray-300'>Description Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, quibusdam! ipsum dolor sit amet consectetur adipisicing elit. Tenetur, eius?</p>
-      <p>Languages:</p>
-      <p>Stars: </p>
-      <p>Updated at: </p> 
+      <p className='leading-tight text-sm line-clamp-4 text-gray-300' className={Response.description?"block":"hidden"}>{repos.description}</p>
+      <p>Language : {repos.language}</p>
+      <p>Stars : {repos.stargazers_count}</p>
+      <p>Updated at : {formatted} </p> 
     </div>
   )
 }

@@ -14,7 +14,7 @@ const Searchbar = ({username, setUsername, fetchUser}) => {
                 setUsername(e.target.value)
             }}
         />
-        <button className='lg:p-4 cursor-pointer'><CircleArrowRight className='hover:text-[#b0adad] transition-all duration-150 h-[20px] lg:h-[28px]'            
+        <button className='lg:p-4 cursor-pointer'><CircleArrowRight className='hover:text-[#b0adad] transition-all duration-150 h-5 lg:h-[28px]'            
             onClick={()=>{
                 fetchUser(username)
             }}

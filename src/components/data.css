@@ -21,6 +21,36 @@
     font-weight:500;
 }
 
-#bottom::-webkit-scrollbar{
+#card-content::-webkit-scrollbar{
     display: none;
 }
+
+@media (min-width:600px) and (max-width:1023px){
+    #bio{
+        gap: 2px;
+    }
+    #top{
+        max-height: auto;
+    }
+    #card-content{
+        width:80%;
+        left: 50%;
+        transform: translateX(-50%);
+
+    }
+    /* #bottom{
+        overflow-y: hidden;
+    } */
+}
+
+@media (min-width:1024px){
+    #bio{
+        gap:2px;
+    }
+    #card-content{
+        width:60%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
