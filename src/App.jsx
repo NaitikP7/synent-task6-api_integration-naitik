@@ -15,6 +15,7 @@ const App = () => {
   const fetchUser = async(user)=>{
 
     const trimmedName = user.trim().toLowerCase();
+    setLoading(true)
 
     try{
         const response = await fetch(
@@ -23,6 +24,7 @@ const App = () => {
         if(response.status===404){
             setError(trimmedName)
             setUser(null)
+            setLoading(false)
             return
         }
         const data = await response.json()
@@ -32,6 +34,7 @@ const App = () => {
           if(repository.status !== 200){
             setError(trimmedName)
             setUser(null)
+            setLoading(false)
             return
           }
           const repo_data = await repository.json()
@@ -44,10 +47,12 @@ const App = () => {
         }
         setUser(data)
         setError("")
+        setLoading(false)
     }
 
     catch(err){
         setError("Something went wrong")
+        setLoading(false)
     }
 }
 
@@ -59,6 +64,14 @@ const App = () => {
       }}
     >
       <Content username={username}  setUsername={setUsername} fetchUser={fetchUser}/>
+      {loading && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm">
+          <div className="flex flex-col items-center gap-4">
+            <div className="animate-spin rounded-full h-16 w-16 border-4 border-white border-t-blue-500"></div>
+            <p className="text-white text-lg font-semibold">Fetching user data...</p>
+          </div>
+        </div>
+      )}
       {error && <ErrorPage name={error}/>}      
       {user && <User user={user} repos={repos}/>}
       
