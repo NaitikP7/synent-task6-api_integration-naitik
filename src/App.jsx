@@ -56,6 +56,14 @@ const App = () => {
     }
 }
 
+const resetApp = () => {
+  setUsername('');
+  setUser(null);
+  setRepos([]);
+  setError('');
+  setLoading(false);
+};
+
   return (
     <div
       className="h-screen w-full bg-cover bg-center"
@@ -63,7 +71,7 @@ const App = () => {
         backgroundImage: `url(${mainBack})`
       }}
     >
-      <Content username={username}  setUsername={setUsername} fetchUser={fetchUser}/>
+      <Content username={username} setUsername={setUsername} fetchUser={fetchUser} resetApp={resetApp} />
       {loading && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm">
           <div className="flex flex-col items-center gap-4">

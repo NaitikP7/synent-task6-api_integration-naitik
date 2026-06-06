@@ -10,7 +10,7 @@ const Navbar = (props) => {
     lg:px-20 items-center backdrop-blur-xl'>
       <div className='flex items-center gap-1'>
         <Fan strokeWidth={3} />
-        <h2 className='lg:text-[20px] font-bold'>Dev<span className='font-normal text-shadow-lime-50'>Search</span></h2>
+        <h2 className='lg:text-[20px] font-bold' onClick={props.resetApp} style={{cursor: 'pointer'}}>Dev<span className='font-normal text-shadow-lime-50'>Search</span></h2>
       </div>
         
         <Searchbar username={props.username} setUsername ={props.setUsername} fetchUser={props.fetchUser} 
